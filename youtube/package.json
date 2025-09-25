@@ -1,0 +1,19 @@
+{
+  "name": "youtube-gemini-summarizer",
+  "version": "0.1.0",
+  "description": "Fetches new videos from YouTube channel RSS feeds and summarizes them with Google Gemini.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "summarize": "npm run build && node dist/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.11.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.2"
+  }
+}
