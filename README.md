@@ -34,3 +34,42 @@ To learn to get started with Browserbase, check out ['browserbase/README.md'](./
 ### Alternative Installation Methods
 
 [Smithery](https://smithery.ai/protocol/@browserbasehq)
+
+## Weekly G10 Market Summary Script
+
+The repository also includes a standalone Python helper for producing a weekly cross-asset
+market summary covering the G10. The script gathers equity, credit, FX, and rates proxies,
+calculates the change between the start and end of the latest trading week, and can send the
+result by email via a Zoho account.
+
+### Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+The script expects Zoho SMTP credentials and the recipient list to be provided via
+environment variables:
+
+* `ZOHO_EMAIL` – the Zoho email address used to send the report.
+* `ZOHO_EMAIL_PASSWORD` or `ZOHO_EMAIL_APP_PASSWORD` – the password/app password for that
+  account.
+* `ZOHO_EMAIL_RECIPIENTS` – comma separated list of recipients.
+
+### Usage
+
+Preview the email body without sending:
+
+```bash
+python scripts/weekly_market_summary.py --preview
+```
+
+Send the summary via Zoho (also prints a copy to stdout):
+
+```bash
+python scripts/weekly_market_summary.py --send --subject "Weekly Market Wrap"
+```
+
+> **Note:** Some sovereign rate proxies rely on ETF substitutes where direct yield tickers are
+> unavailable on Yahoo Finance. If a market lacks coverage or an instrument fails to download,
+> the script will warn and continue with the remaining data points.
