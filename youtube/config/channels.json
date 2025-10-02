@@ -1,0 +1,9 @@
+{
+  "geminiModel": "gemini-1.5-flash",
+  "channels": [
+    {
+      "url": "https://www.youtube.com/@YouTubeCreators",
+      "name": "YouTube Creators"
+    }
+  ]
+}
